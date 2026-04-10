@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Spandana H A — Portfolio</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #0a0f1e;
+    --navy2: #0f1729;
+    --navy3: #151f36;
+    --card-bg: #111827;
+    --cyan: #00d4c8;
+    --cyan2: #00b8ad;
+    --amber: #f59e0b;
+    --text: #e2e8f0;
+    --muted: #7c8fa6;
+    --border: rgba(0,212,200,0.18);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ─── NAV ─── */
+  .navbar {
+    background: rgba(10,15,30,0.92) !important;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 0;
+    position: sticky; top: 0; z-index: 1000;
+  }
+  .navbar-brand {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--cyan) !important;
+    letter-spacing: -0.5px;
+  }
+  .nav-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--muted) !important;
+    text-transform: lowercase;
+    letter-spacing: 0.5px;
+    padding: 0.4rem 1rem !important;
+    transition: color 0.2s;
+  }
+  .nav-link:hover, .nav-link.active { color: var(--cyan) !important; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 0;
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,200,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,200,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,212,200,0.1) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    pointer-events: none;
+  }
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--cyan);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 32px; height: 1px;
+    background: var(--cyan);
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -2px;
+    color: #f1f5f9;
+    margin-bottom: 0.5rem;
+  }
+  .hero h1 span { color: var(--cyan); }
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--muted);
+    margin: 1.5rem 0 2.5rem;
+    max-width: 500px;
+    font-weight: 300;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary-custom {
+    background: var(--cyan);
+    color: #0a0f1e;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 4px;
+    padding: 0.75rem 2rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary-custom:hover { background: var(--cyan2); color: #0a0f1e; transform: translateY(-2px); }
+  .btn-ghost-custom {
+    background: transparent;
+    color: var(--cyan);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.75rem 2rem;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-ghost-custom:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-2px); }
+  .hero-badges { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 3rem; }
+  .hero-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    background: rgba(0,212,200,0.08);
+    border: 1px solid var(--border);
+    color: var(--cyan);
+    padding: 4px 14px;
+    border-radius: 20px;
+  }
+
+  /* ─── SECTION ─── */
+  section { padding: 6rem 0; }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--cyan);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: #f1f5f9;
+    letter-spacing: -1px;
+    margin-bottom: 0.5rem;
+  }
+  .section-line {
+    width: 48px; height: 2px;
+    background: var(--cyan);
+    margin-bottom: 3rem;
+  }
+  .alt-bg { background: var(--navy2); }
+
+  /* ─── ABOUT ─── */
+  .about-stat {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .about-stat .num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--cyan);
+    line-height: 1;
+  }
+  .about-stat .lbl {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    margin-top: 0.25rem;
+  }
+
+  /* ─── SKILLS ─── */
+  .skill-cat {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    height: 100%;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .skill-cat:hover { border-color: var(--cyan); transform: translateY(-4px); }
+  .skill-cat-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+  .skill-pill {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    background: rgba(0,212,200,0.07);
+    border: 1px solid rgba(0,212,200,0.15);
+    color: var(--text);
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin: 3px;
+  }
+
+  /* ─── PROJECTS ─── */
+  .project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cyan), transparent);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .project-card:hover { border-color: var(--cyan); transform: translateY(-4px); }
+  .project-card:hover::before { opacity: 1; }
+  .project-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    margin-bottom: 0.75rem;
+  }
+  .project-desc {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+  }
+  .project-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    background: rgba(245,158,11,0.1);
+    border: 1px solid rgba(245,158,11,0.2);
+    color: var(--amber);
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin: 2px;
+  }
+
+  /* ─── EXPERIENCE ─── */
+  .exp-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--cyan);
+    border-radius: 0 10px 10px 0;
+    padding: 1.75rem 2rem;
+    margin-bottom: 1.5rem;
+    transition: transform 0.2s;
+  }
+  .exp-card:hover { transform: translateX(4px); }
+  .exp-role {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #f1f5f9;
+    margin-bottom: 0.2rem;
+  }
+  .exp-org {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--cyan);
+    margin-bottom: 0.75rem;
+  }
+  .exp-desc { color: var(--muted); font-size: 0.9rem; }
+
+  /* ─── EDUCATION ─── */
+  .edu-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.75rem;
+    transition: border-color 0.2s, transform 0.2s;
+    height: 100%;
+  }
+  .edu-card:hover { border-color: var(--cyan); transform: translateY(-3px); }
+  .edu-degree {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #f1f5f9;
+    margin-bottom: 0.25rem;
+  }
+  .edu-school { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem; }
+  .edu-grade {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--cyan);
+    font-weight: 500;
+  }
+  .edu-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.25rem;
+  }
+
+  /* ─── CERTS ─── */
+  .cert-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0,212,200,0.08);
+  }
+  .cert-item:last-child { border-bottom: none; }
+  .cert-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--cyan);
+    margin-top: 8px; flex-shrink: 0;
+  }
+  .cert-name { font-size: 0.9rem; color: var(--text); }
+  .cert-org { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted); }
+
+  /* ─── CONTACT ─── */
+  .contact-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2.5rem;
+    text-align: center;
+  }
+  .contact-email {
+    font-family: 'DM Mono', monospace;
+    font-size: 1.05rem;
+    color: var(--cyan);
+    text-decoration: none;
+    display: inline-block;
+    margin: 1rem 0;
+    padding: 0.75rem 2rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-email:hover { border-color: var(--cyan); background: rgba(0,212,200,0.06); color: var(--cyan); }
+  .contact-meta { color: var(--muted); font-size: 0.85rem; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 2.8rem; }
+    section { padding: 4rem 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#">SHA</a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" style="color:var(--cyan);">
+      <span class="navbar-toggler-icon" style="filter:invert(1)"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav gap-1">
+        <li class="nav-item"><a class="nav-link" href="#about">about</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#experience">experience</a></li>
+        <li class="nav-item"><a class="nav-link" href="#education">education</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="container position-relative">
+    <div class="row">
+      <div class="col-lg-9">
+        <div class="hero-tag">Full-Stack Developer</div>
+        <h1>Spandana<br/><span>H A</span></h1>
+        <p class="hero-sub">Information Science undergraduate building scalable, user-focused web applications with React, Node.js, and MongoDB.</p>
+        <div class="hero-btns">
+          <a href="#projects" class="btn-primary-custom">view projects</a>
+          <a href="#contact" class="btn-ghost-custom">get in touch</a>
+        </div>
+        <div class="hero-badges">
+          <span class="hero-badge">React</span>
+          <span class="hero-badge">Node.js</span>
+          <span class="hero-badge">MongoDB</span>
+          <span class="hero-badge">Express.js</span>
+          <span class="hero-badge">MERN Stack</span>
+          <span class="hero-badge">IBM Cloud</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="alt-bg">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">01 / about</p>
+      <h2 class="section-title">Who I Am</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-7 fade-in">
+        <p style="color:var(--muted); font-size:1.05rem; line-height:1.85; margin-bottom:1.25rem;">
+          I'm an Information Science & Engineering student at <span style="color:var(--text);">The National Institute of Engineering, Mysuru</span>, currently in my second year with a CGPA of 8.5/10.
+        </p>
+        <p style="color:var(--muted); font-size:1.05rem; line-height:1.85; margin-bottom:1.25rem;">
+          I specialize in frontend and MERN stack development, with hands-on experience building full-stack applications from database design to polished user interfaces.
+        </p>
+        <p style="color:var(--muted); font-size:1.05rem; line-height:1.85;">
+          Beyond web development, I've completed an <span style="color:var(--text);">IBM AI & Cloud internship</span> and hold certifications in AI fundamentals, cloud computing, Java OOP, and data structures.
+        </p>
+      </div>
+      <div class="col-lg-5 fade-in">
+        <div class="row g-3">
+          <div class="col-6"><div class="about-stat"><div class="num">8.5</div><div class="lbl">CGPA / 10</div></div></div>
+          <div class="col-6"><div class="about-stat"><div class="num">+</div><div class="lbl">Projects Built</div></div></div>
+          <div class="col-6"><div class="about-stat"><div class="num">5+</div><div class="lbl">Certifications</div></div></div>
+          <div class="col-6"><div class="about-stat"><div class="num">2027</div><div class="lbl">Graduating</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">02 / skills</p>
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 fade-in">
+        <div class="skill-cat">
+          <div class="skill-cat-title">Frontend</div>
+          <span class="skill-pill">HTML</span><span class="skill-pill">CSS</span><span class="skill-pill">JavaScript</span><span class="skill-pill">React</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-in">
+        <div class="skill-cat">
+          <div class="skill-cat-title">Backend</div>
+          <span class="skill-pill">Node.js</span><span class="skill-pill">Express.js</span><span class="skill-pill">REST APIs</span><span class="skill-pill">JWT Auth</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-in">
+        <div class="skill-cat">
+          <div class="skill-cat-title">Databases</div>
+          <span class="skill-pill">MongoDB</span><span class="skill-pill">MySQL</span><span class="skill-pill">NoSQL</span><span class="skill-pill">SQL</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-in">
+        <div class="skill-cat">
+          <div class="skill-cat-title">Programming</div>
+          <span class="skill-pill">Java</span><span class="skill-pill">Python</span><span class="skill-pill">C</span><span class="skill-pill">SQL</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-in">
+        <div class="skill-cat">
+          <div class="skill-cat-title">Tools & Platforms</div>
+          <span class="skill-pill">Git</span><span class="skill-pill">GitHub</span><span class="skill-pill">VS Code</span><span class="skill-pill">IBM Cloud</span><span class="skill-pill">Cloudinary</span><span class="skill-pill">Postman</span>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-in">
+        <div class="skill-cat">
+          <div class="skill-cat-title">Concepts</div>
+          <span class="skill-pill">MERN Stack</span><span class="skill-pill">CRUD</span><span class="skill-pill">SPA</span><span class="skill-pill">Cloud Deployment</span><span class="skill-pill">AI Integration</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="alt-bg">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">03 / projects</p>
+      <h2 class="section-title">Projects</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-6 fade-in">
+        <div class="project-card">
+          <div class="project-num">Project 01</div>
+          <div class="project-title">uNIEte — Student Collaboration Platform</div>
+          <p class="project-desc">A MERN-based campus networking system that solves the student–club discovery problem. Features role-based dashboards, secure JWT authentication, real-time messaging, and a content-based recommendation algorithm. Designed with scalable NoSQL data models and privacy-restricted social feeds.</p>
+          <div>
+            <span class="project-tag">MongoDB</span>
+            <span class="project-tag">Express.js</span>
+            <span class="project-tag">React</span>
+            <span class="project-tag">Node.js</span>
+            <span class="project-tag">JWT</span>
+            <span class="project-tag">Cloudinary</span>
+            <span class="project-tag">Postman</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 fade-in">
+        <div class="project-card">
+          <div class="project-num">Project 02</div>
+          <div class="project-title">Cycle Rental System</div>
+          <p class="project-desc">A web-based electric cycle rental management system with user registration, rental booking, and transaction tracking. Designed a relational MySQL database schema and implemented backend logic in Java, with a frontend interface for managing cycle availability and rental history.</p>
+          <div>
+            <span class="project-tag">Java</span>
+            <span class="project-tag">MySQL</span>
+            <span class="project-tag">HTML</span>
+            <span class="project-tag">JavaScript</span>
+            <span class="project-tag">CRUD</span>
+            <span class="project-tag">Git</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">04 / experience</p>
+      <h2 class="section-title">Experience</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="row">
+      <div class="col-lg-8 fade-in">
+        <div class="exp-card">
+          <div class="exp-role">AI & Cloud Intern</div>
+          <div class="exp-org">IBM — Edunet Foundation</div>
+          <p class="exp-desc">Completed hands-on internship with exposure to cloud deployment workflows and AI service integration. Worked with IBM Cloud Lite services and real-world problem statements. Built and tested AI/cloud-based solution prototypes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="alt-bg">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">05 / education</p>
+      <h2 class="section-title">Education</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 fade-in">
+        <div class="edu-card">
+          <div class="edu-degree">B.E. — Information Science & Engineering</div>
+          <div class="edu-school">The National Institute of Engineering, Mysuru</div>
+          <div class="edu-grade">CGPA: 8.5 / 10</div>
+          <div class="edu-year">2023 – 2027</div>
+        </div>
+      </div>
+      <div class="col-lg-4 fade-in">
+        <div class="edu-card">
+          <div class="edu-degree">Class XII (PU)</div>
+          <div class="edu-school">Excellent PU College, Moodbidri</div>
+          <div class="edu-grade">92.8%</div>
+          <div class="edu-year">2023</div>
+        </div>
+      </div>
+      <div class="col-lg-4 fade-in">
+        <div class="edu-card">
+          <div class="edu-degree">Class X (ICSE)</div>
+          <div class="edu-school">Sri Vivekananda International School, Tiptur</div>
+          <div class="edu-grade">85%</div>
+          <div class="edu-year">2021</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certifications -->
+    <div class="row mt-5">
+      <div class="col-lg-7 fade-in">
+        <p class="section-label" style="margin-top:1rem;">certifications</p>
+        <h3 class="section-title" style="font-size:1.6rem;">Certifications</h3>
+        <div class="section-line"></div>
+        <div style="background:var(--card-bg); border:1px solid var(--border); border-radius:10px; padding:1.5rem 2rem;">
+          <div class="cert-item">
+            <div class="cert-dot"></div>
+            <div><div class="cert-name">AI Fundamentals</div><div class="cert-org">IBM — Edunet</div></div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-dot"></div>
+            <div><div class="cert-name">Journey to Cloud</div><div class="cert-org">IBM — Edunet</div></div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-dot"></div>
+            <div><div class="cert-name">Object-Oriented Programming in Java</div><div class="cert-org">Coursera</div></div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-dot"></div>
+            <div><div class="cert-name">Data Structures in C</div><div class="cert-org">Coursera</div></div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-dot"></div>
+            <div><div class="cert-name">MATLAB for Engineers</div><div class="cert-org">Coursera</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="fade-in">
+      <p class="section-label">06 / contact</p>
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="row justify-content-center fade-in">
+      <div class="col-lg-7">
+        <div class="contact-card">
+          <p style="color:var(--muted); margin-bottom:1.5rem; font-size:1rem; line-height:1.8;">I'm actively looking for entry-level developer roles. If you're working on something interesting or have an opportunity that fits, feel free to reach out.</p>
+          <a href="mailto:spandana2400@gmail.com" class="contact-email">spandana2400@gmail.com</a>
+          <div class="contact-meta" style="margin-top:1.5rem;">
+            <span>+91-9945355380</span>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+            <a href="https://github.com/spandana-builds" target="_blank" style="color:var(--cyan); text-decoration:none;">github.com/spandana-builds</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+            <span>Mysuru, Karnataka</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>Built with Bootstrap · Designed for Spandana H A · 2025</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>
+</body>
+</html>
